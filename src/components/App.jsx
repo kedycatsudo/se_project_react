@@ -3,11 +3,18 @@ import '../blocks/app.css';
 import Header from './Header';
 import Main from './Main';
 import ModalWithForm from './ModalWithForm';
+import ItemModal from './ItemModal';
 function App() {
   const [weatherData, setWeatherData] = useState({ type: 'cold' });
   const [activeModal, setActiveModal] = useState('');
+  const [selectedCard, setSelectedCard] = useState({});
   const handleAddClick = () => {
     setActiveModal('add-garment');
+  };
+
+  const handleCardClick = (card) => {
+    setActiveModal('preview');
+    setSelectedCard(card);
   };
   const closeModal = () => {
     setActiveModal('');
@@ -16,13 +23,16 @@ function App() {
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick}></Header>
-        <Main weatherData={weatherData}></Main>
+        <Main
+          weatherData={weatherData}
+          handleCardClick={handleCardClick}
+        ></Main>
       </div>
       <ModalWithForm
         title="New garment"
         buttonText="Add garment"
         activeModal={activeModal}
-        handleCloseClick={closeModal}
+        onClose={closeModal}
       >
         <label htmlFor="name" className="modal__label">
           Name{' '}
@@ -64,6 +74,11 @@ function App() {
           </label>
         </fieldset>
       </ModalWithForm>
+      <ItemModal
+        activeModal={activeModal}
+        card={selectedCard}
+        onClose={closeModal}
+      ></ItemModal>
     </div>
   );
 }
