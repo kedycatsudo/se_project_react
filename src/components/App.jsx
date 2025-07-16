@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../blocks/app.css';
 import Header from './Header';
 import Main from './Main';
 import ModalWithForm from './ModalWithForm';
 import ItemModal from './ItemModal';
+import { getWeather, filterWeatherData } from '../utils/weatherApi';
+import { coordinates, APIkey } from '../utils/constants';
 function App() {
-  const [weatherData, setWeatherData] = useState({ type: 'cold' });
+  const [weatherData, setWeatherData] = useState({
+    type: '',
+    temp: { F: 999 },
+    city: '',
+  });
   const [activeModal, setActiveModal] = useState('');
   const [selectedCard, setSelectedCard] = useState({});
   const handleAddClick = () => {
@@ -19,10 +25,24 @@ function App() {
   const closeModal = () => {
     setActiveModal('');
   };
+
+  useEffect(() => {
+    getWeather(coordinates, APIkey)
+      .then((data) => {
+        const filteredData = filterWeatherData(data);
+        setWeatherData(filteredData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div className="page">
       <div className="page__content">
-        <Header handleAddClick={handleAddClick}></Header>
+        <Header
+          handleAddClick={handleAddClick}
+          weatherData={weatherData}
+        ></Header>
         <Main
           weatherData={weatherData}
           handleCardClick={handleCardClick}
