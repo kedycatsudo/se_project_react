@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  /* Replace with the appropriate font weight */
+  font-weight: 500;
+  /* Replace with the correct file path */
+  src: url('./fonts/CabinetGrotesk-Medium.woff') format('truetype');
+}

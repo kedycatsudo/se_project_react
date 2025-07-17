@@ -1,7 +1,7 @@
 import '../blocks/header.css';
 import logo from '../assets/logo.svg';
 import avatar from '../assets/avatar.svg';
-
+import '../vendor/fonts.css';
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString('default', {
     month: 'long',

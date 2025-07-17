@@ -2,10 +2,14 @@
   display: flex;
   align-items: center;
   padding: 32px 0 28px;
+  font-family: 'Cabinet Grotesk';
+  font-size: 20px;
+  line-height: 24px;
 }
 .header__add-clothes-btn {
   margin-left: auto;
   border: none;
+  background-color: transparent;
 }
 .header__user-container {
   display: flex;
