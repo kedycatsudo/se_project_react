@@ -13,16 +13,21 @@
 .modal__open {
   visibility: visible;
 }
+.modal__label {
+  margin-top: 24px;
+}
 .modal__content {
   background-color: white;
   position: relative;
   padding: 28px 28px 36px;
-  max-width: 496px;
+  max-width: 500px;
   box-sizing: border-box;
   width: 100%;
+  border-radius: 20px;
 }
 .modal__close {
   position: absolute;
+  cursor: pointer;
   top: 20px;
   right: 28px;
   width: 20px;
@@ -32,6 +37,10 @@
 }
 .modal__title {
   margin: 0;
+  font-size: 16px;
+  font-weight: 700px;
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
 }
 .modal__form {
   display: flex;
@@ -40,12 +49,47 @@
 }
 .modal__input {
   display: block;
+  border: none;
+  border-bottom: 1px solid;
+  outline: none;
+  width: 100%;
+  padding-top: 3px;
 }
 .modal__submit {
+  width: 124px;
+  height: 36px;
+  background: rgba(0, 0, 0, 1);
+  color: white;
+  font-family: 'Cabinet Grotesk';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 4px;
+  border: none;
+  margin-top: 32px;
+}
+.modal__submit:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+}
+.modal__submit:disabled {
+  cursor: not-allowed; /* Show "not-allowed" cursor */
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.3);
 }
 .modal__radio-btns {
   border: none;
   padding: 0;
   display: flex;
   flex-direction: column;
+}
+.modal__radio-input {
+  accent-color: black;
+}
+.modal__legend {
+  padding-top: 24px;
+}
+.modal__label_type_radio {
+  margin-top: 8px;
 }

@@ -48,7 +48,9 @@ function App() {
           weatherData={weatherData}
           handleCardClick={handleCardClick}
         ></Main>
+        <Footer></Footer>
       </div>
+
       <ModalWithForm
         title="New garment"
         buttonText="Add garment"
@@ -74,7 +76,7 @@ function App() {
           />
         </label>
         <fieldset className="modal__radio-btns">
-          <legend className="modal__legend">Seletc the weather type</legend>
+          <legend className="modal__legend">Select the weather type</legend>
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
             <input id="hot" type="radio" className="modal__radio-input" />
             Hot
@@ -100,7 +102,6 @@ function App() {
         card={selectedCard}
         onClose={closeModal}
       ></ItemModal>
-      <Footer></Footer>
     </div>
   );
 }

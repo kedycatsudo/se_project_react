@@ -1,0 +1,43 @@
+.modal__image {
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-radius: 16px;
+}
+.item__modal_content {
+  background-color: white;
+  position: relative;
+
+  max-width: 500px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 20px;
+}
+.item__card_close-btn {
+  position: absolute;
+  cursor: pointer;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  border: none;
+
+  background-image: url('../assets/modal_close_btn.svg');
+}
+.item__modal-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 32px;
+  font-family: 'Cabinet Grotesk';
+  font-size: 20px;
+}
+.item__modal-caption {
+  margin: 0;
+  padding: 0;
+}
+.item__modal-weather {
+  margin: 0;
+  padding: 0;
+}

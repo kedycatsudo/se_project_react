@@ -1,6 +1,7 @@
 .footer {
   display: flex;
   justify-content: space-around;
+  margin-top: auto;
 }
 .footer__developer {
   font-family: 'Cabinet Grotesk';
