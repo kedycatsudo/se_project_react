@@ -6,6 +6,7 @@ import ModalWithForm from './ModalWithForm';
 import ItemModal from './ItemModal';
 import { getWeather, filterWeatherData } from '../utils/weatherApi';
 import { coordinates, APIkey } from '../utils/constants';
+import Footer from './Footer';
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: '',
@@ -99,6 +100,7 @@ function App() {
         card={selectedCard}
         onClose={closeModal}
       ></ItemModal>
+      <Footer></Footer>
     </div>
   );
 }

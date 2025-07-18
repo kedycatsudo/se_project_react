@@ -2,9 +2,6 @@ import { weatherOptions } from '../utils/constants.js';
 import '../blocks/weatherCard.css';
 function WeatherCard({ weatherData }) {
   const filteredOptions = weatherOptions.filter((option) => {
-    console.log('weatherData.isDay:', weatherData.isDay);
-    console.log('weatherData.condition:', weatherData.condition);
-    console.log('weatherOptions:', weatherOptions);
     return (
       option.day === weatherData.isDay &&
       option.condition === weatherData.condition

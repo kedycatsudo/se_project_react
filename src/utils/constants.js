@@ -17,7 +17,7 @@ export const weatherOptions = [
   {
     day: false,
     condition: 'clouds',
-    url: new URL('../assets/night/night_cloudy', import.meta.url).href,
+    url: new URL('../assets/night/night_cloudy.svg', import.meta.url).href,
   },
 ];
 export const defaultClothingItems = [
@@ -30,7 +30,7 @@ export const defaultClothingItems = [
   {
     _id: 1,
     name: 'Hoodie',
-    weather: 'warm',
+    weather: 'cold',
     link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Hoodie.png?etag=5f52451d0958ccb1016c78a45603a4e8',
   },
   {
@@ -42,7 +42,7 @@ export const defaultClothingItems = [
   {
     _id: 3,
     name: 'Sneakers',
-    weather: 'cold',
+    weather: 'warm',
     link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png?etag=3efeec41c1c78b8afe26859ca7fa7b6f',
   },
   {
@@ -56,6 +56,12 @@ export const defaultClothingItems = [
     name: 'Coat',
     weather: 'cold',
     link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4',
+  },
+  {
+    _id: 5,
+    name: 'Hat',
+    weather: 'warm',
+    link: 'telegram-cloud-photo-size-2-5282725103550971737-y.png',
   },
 ];
 export const coordinates = { latitude: 36.2497114, longitude: -83.7988651 };

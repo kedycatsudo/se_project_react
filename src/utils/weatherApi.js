@@ -10,9 +10,9 @@ export const getWeather = ({ latitude, longitude }, APIkey) => {
   });
 };
 const getWeatherType = (temperature) => {
-  if (temperature > 86) {
+  if (temperature > 70) {
     return 'hot';
-  } else if (temperature > 66 && temperature < 86) {
+  } else if (temperature > 60 && temperature < 70) {
     return 'warm';
   } else {
     return 'cold';
