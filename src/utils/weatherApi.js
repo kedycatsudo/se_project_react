@@ -1,13 +1,21 @@
-export const getWeather = ({ latitude, longitude }, APIkey) => {
-  return fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Error: ${res.status}`);
+export const getWeather = async (
+  { latitude, longitude },
+  APIkey,
+  retries = 3
+) => {
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`;
+
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Error: ${response.status}`);
+      return await response.json();
+    } catch (err) {
+      console.warn(`Attempt ${attempt} failed: ${err.message}`);
+      if (attempt === retries) throw err;
+      await new Promise((resolve) => setTimeout(resolve, 1000 * attempt)); // exponential backoff
     }
-  });
+  }
 };
 const getWeatherType = (temperature) => {
   if (temperature > 70) {

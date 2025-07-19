@@ -10,6 +10,26 @@ export const weatherOptions = [
     url: new URL('../assets/day/day_cloudy.svg', import.meta.url).href,
   },
   {
+    day: true,
+    condition: 'rainy',
+    url: new URL('../assets/day/day_rainy.png', import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: 'storm',
+    url: new URL('../assets/day/day_storm.png', import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: 'snow',
+    url: new URL('../assets/day/day_snow.png', import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: 'fog',
+    url: new URL('../assets/day/day_fog.png', import.meta.url).href,
+  },
+  {
     day: false,
     condition: 'clear',
     url: new URL('../assets/night/night_clear.svg', import.meta.url).href,
@@ -18,6 +38,26 @@ export const weatherOptions = [
     day: false,
     condition: 'clouds',
     url: new URL('../assets/night/night_cloudy.svg', import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: 'rainy',
+    url: new URL('../assets/night/night_rainy.png', import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: 'storm',
+    url: new URL('../assets/night/night_storm.png', import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: 'snow',
+    url: new URL('../assets/night/night_snow.png', import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: 'fog',
+    url: new URL('../assets/night/night_fog.png', import.meta.url).href,
   },
 ];
 export const defaultClothingItems = [

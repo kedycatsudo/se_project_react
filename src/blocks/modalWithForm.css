@@ -15,6 +15,7 @@
 }
 .modal__label {
   margin-top: 24px;
+  font-weight: bold;
 }
 .modal__content {
   background-color: white;
@@ -28,6 +29,8 @@
 .modal__close {
   position: absolute;
   cursor: pointer;
+  background-repeat: no-repeat;
+  background-color: transparent;
   top: 20px;
   right: 28px;
   width: 20px;
@@ -89,6 +92,7 @@
 }
 .modal__legend {
   padding-top: 24px;
+  font-weight: bold;
 }
 .modal__label_type_radio {
   margin-top: 8px;

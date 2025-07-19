@@ -10,6 +10,7 @@ function WeatherCard({ weatherData }) {
 
   const weatherOptionUrl = filteredOptions[0]?.url;
   const weatherOptionAlt = filteredOptions[0]?.condition;
+
   return (
     <section className="weather-card">
       <p className="weather-card__temp">{weatherData.temp.F}°F</p>
@@ -21,4 +22,5 @@ function WeatherCard({ weatherData }) {
     </section>
   );
 }
+
 export default WeatherCard;
