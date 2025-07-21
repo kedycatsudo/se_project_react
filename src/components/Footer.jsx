@@ -1,10 +1,10 @@
 import '../blocks/footer.css';
 function Footer() {
   return (
-    <div className="footer">
+    <footer className="footer">
       <p className="footer__developer">Doruk Kocausta</p>
       <p className="footer__developer">2025</p>
-    </div>
+    </footer>
   );
 }
 export default Footer;

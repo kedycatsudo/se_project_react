@@ -88,6 +88,7 @@ function App() {
         activeModal={activeModal}
         onClose={closeModal}
         onSubmit={handleSubmit}
+        isOpen={activeModal === 'add-garment'}
       >
         <label htmlFor="name" className="modal__label">
           Name{' '}
