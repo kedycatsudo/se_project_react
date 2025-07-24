@@ -1,0 +1,43 @@
+.toggle__switch {
+  margin-left: auto;
+  width: 50px;
+  height: 28px;
+  border: 2px solid black;
+  border-radius: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+.toggle__switch-checkbox {
+  opacity: 0;
+}
+.toggle__switch-circle {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: block;
+  width: 28px;
+  height: 28px;
+  background-color: black;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+.toggle__switch-text {
+  top: 4px;
+  position: absolute;
+  color: gray;
+}
+.toggle__switch-text_F {
+  left: 8px;
+}
+.toggle__switch-text_C {
+  right: 8px;
+}
+
+.toggle__switch-checkbox:checked ~ .toggle__switch-circle {
+  left: 22px;
+}
+
+.toggle__switch-text_color_white {
+  color: white;
+}
