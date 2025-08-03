@@ -1,0 +1,15 @@
+.clothes__section {
+  display: flex;
+  gap: 20px;
+}
+.clothes__section-add-btn {
+  border: none;
+}
+.clothes__section-items {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  gap: 21px;
+}

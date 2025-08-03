@@ -1,0 +1,6 @@
+.sidebar {
+  display: flex;
+  gap: 16px;
+}
+.sidebar__username {
+}

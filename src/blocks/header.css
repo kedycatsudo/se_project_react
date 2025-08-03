@@ -28,3 +28,7 @@
 .header__logo {
   margin: 0 24px 0;
 }
+.header__link {
+  text-decoration: none;
+  color: black;
+}

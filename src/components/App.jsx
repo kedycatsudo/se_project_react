@@ -10,6 +10,11 @@ import Footer from './Footer';
 import currentTemperatureUnitContext from '../contexts/currentTemperatureUnitContext';
 import AddItemModal from './AddItemModal';
 import { Routes, Route } from 'react-router-dom';
+import Profile from './Profile';
+import { getItems } from '../utils/api';
+import { postItem } from '../utils/api';
+import { deleteItem } from '../utils/api';
+
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: '',
@@ -21,7 +26,7 @@ function App() {
   const [activeModal, setActiveModal] = useState('');
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState('F');
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const handleToggleSwitchChange = () => {
     setcurrentTemperatureUnit(currentTemperatureUnit === 'F' ? 'C' : 'F');
   };
@@ -38,16 +43,47 @@ function App() {
     setActiveModal('');
   };
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    setClothingItems([...clothingItems, { name, link: imageUrl, weather }]);
-    closeModal();
+    postItem({ name, imageUrl, weather })
+      .then((newItem) => {
+        setClothingItems((prevItems) => [...prevItems, newItem]);
+        closeModal();
+      })
+      .catch((error) => {
+        console.log(error);
+        // Optionally show an error message to the user
+      });
   };
-
+  const handleDeleteItem = (id) => {
+    deleteItem(id)
+      .then(() => {
+        setClothingItems((prevItems) =>
+          prevItems.filter((item) => item._id !== id)
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+        // Optionally show an error message to the user
+      });
+  };
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
 
         setWeatherData(filteredData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        const normalized = data.map((item) => ({
+          ...item,
+          link: item.link || item.imageUrl, // fallback if needed
+        }));
+        setClothingItems(normalized);
       })
       .catch((error) => {
         console.log(error);
@@ -72,10 +108,19 @@ function App() {
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleDeleteItem={handleDeleteItem}
                 ></Main>
               }
             ></Route>
-            <Route path="profile" element={<p>Profile</p>}></Route>
+            <Route
+              path="profile"
+              element={
+                <Profile
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                ></Profile>
+              }
+            ></Route>
           </Routes>
 
           <Footer></Footer>
