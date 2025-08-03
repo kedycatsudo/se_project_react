@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../blocks/AddItemModal.css';
 import ModalWithForm from './ModalWithForm';
 export default function AddItemModal({
-  OnAddItemModalSubmit,
+  onAddItemModalSubmit,
   onClose,
   activeModal,
 }) {

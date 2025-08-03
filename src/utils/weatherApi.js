@@ -1,9 +1,9 @@
 export const getWeather = async (
   { latitude, longitude },
-  APIkey,
+  apiKey,
   retries = 3
 ) => {
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
 
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {

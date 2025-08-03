@@ -30,12 +30,7 @@ function Header({ handleAddClick, weatherData }) {
       <Link to="/profile" className="header__link">
         <div className="header__user-container">
           <p className="header__username">Terrence Tegegne</p>
-          <img
-            src={avatar}
-            alt="Terrence Tegegne"
-            className="header__avatar
-        "
-          />
+          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
         </div>
       </Link>
     </header>

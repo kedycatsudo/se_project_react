@@ -5,9 +5,9 @@ import Main from './Main';
 import { defaultClothingItems } from '../utils/constants';
 import ItemModal from './ItemModal';
 import { getWeather, filterWeatherData } from '../utils/weatherApi';
-import { coordinates, APIkey } from '../utils/constants';
+import { coordinates, apiKey } from '../utils/constants';
 import Footer from './Footer';
-import currentTemperatureUnitContext from '../contexts/currentTemperatureUnitContext';
+import currentTemperatureUnitContext from '../contexts/CurrentTemperatureUnitContext';
 import AddItemModal from './AddItemModal';
 import { Routes, Route } from 'react-router-dom';
 import Profile from './Profile';
@@ -25,10 +25,10 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState('');
   const [selectedCard, setSelectedCard] = useState({});
-  const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState('F');
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
   const [clothingItems, setClothingItems] = useState([]);
   const handleToggleSwitchChange = () => {
-    setcurrentTemperatureUnit(currentTemperatureUnit === 'F' ? 'C' : 'F');
+    setCurrentTemperatureUnit(currentTemperatureUnit === 'F' ? 'C' : 'F');
   };
 
   const handleAddClick = () => {
@@ -45,7 +45,12 @@ function App() {
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     postItem({ name, imageUrl, weather })
       .then((newItem) => {
-        setClothingItems((prevItems) => [...prevItems, newItem]);
+        // Add link property for consistency
+        const normalizedItem = {
+          ...newItem,
+          link: newItem.link || newItem.imageUrl,
+        };
+        setClothingItems((prevItems) => [...prevItems, normalizedItem]);
         closeModal();
       })
       .catch((error) => {
@@ -66,7 +71,7 @@ function App() {
       });
   };
   useEffect(() => {
-    getWeather(coordinates, APIkey)
+    getWeather(coordinates, apiKey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
 
@@ -118,6 +123,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  onClick={handleAddClick}
                 ></Profile>
               }
             ></Route>
@@ -130,12 +136,13 @@ function App() {
           onClose={closeModal}
           isOpen={activeModal === 'add-garment'}
           activeModal={activeModal}
-          OnAddItemModalSubmit={handleAddItemModalSubmit}
+          onAddItemModalSubmit={handleAddItemModalSubmit}
         ></AddItemModal>
         <ItemModal
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeModal}
+          onDelete={handleDeleteItem}
         ></ItemModal>
       </div>
     </currentTemperatureUnitContext.Provider>

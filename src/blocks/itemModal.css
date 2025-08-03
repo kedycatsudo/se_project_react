@@ -29,11 +29,18 @@
 }
 .item__modal-footer {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  justify-content: space-between;
   margin: 20px 32px;
   font-family: 'Cabinet Grotesk';
   font-size: 20px;
+}
+.item__modal-footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.item__card-delete-btn {
+  margin-top: 0;
 }
 .item__modal-caption {
   margin: 0;
@@ -42,4 +49,9 @@
 .item__modal-weather {
   margin: 0;
   padding: 0;
+}
+.item__card-delete-btn {
+  color: red;
+  border: none;
+  background-color: transparent;
 }
