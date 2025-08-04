@@ -42,7 +42,7 @@
   margin: 0;
   font-size: 16px;
   font-weight: 700px;
-  font-family: 'Cabinet Grotesk';
+  font-family: 'Cabinet Grotesk', Arial, sans-serif;
   font-style: normal;
 }
 .modal__form {
@@ -63,7 +63,7 @@
   height: 36px;
   background: rgba(0, 0, 0, 1);
   color: white;
-  font-family: 'Cabinet Grotesk';
+  font-family: 'Cabinet Grotesk', Arial, sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;

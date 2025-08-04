@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import '../blocks/AddItemModal.css';
 import ModalWithForm from './ModalWithForm';
 export default function AddItemModal({
   onAddItemModalSubmit,
@@ -41,11 +40,6 @@ export default function AddItemModal({
       return;
     }
     onAddItemModalSubmit({ name, imageUrl, weather });
-    // Reset form + close modal
-    setName('');
-    setImageUrl('');
-    setWeather('');
-    setFormErrors({});
   };
   return (
     <ModalWithForm
