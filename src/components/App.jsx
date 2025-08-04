@@ -50,7 +50,7 @@ function App() {
           ...newItem,
           link: newItem.link || newItem.imageUrl,
         };
-        setClothingItems((prevItems) => [...prevItems, normalizedItem]);
+        setClothingItems((prevItems) => [normalizedItem, ...prevItems]);
         closeModal();
       })
       .catch((error) => {
@@ -64,6 +64,7 @@ function App() {
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== id)
         );
+        closeModal(); // Close the modal after successful delete
       })
       .catch((error) => {
         console.log(error);

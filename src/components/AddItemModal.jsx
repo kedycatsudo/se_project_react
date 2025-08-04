@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../blocks/AddItemModal.css';
 import ModalWithForm from './ModalWithForm';
 export default function AddItemModal({
@@ -10,7 +10,14 @@ export default function AddItemModal({
   const [imageUrl, setImageUrl] = useState('');
   const [weather, setWeather] = useState('');
   const [formErrors, setFormErrors] = useState({});
-
+  useEffect(() => {
+    if (activeModal === 'add-garment') {
+      setName('');
+      setImageUrl('');
+      setWeather('');
+      setFormErrors({});
+    }
+  }, [activeModal]);
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -33,7 +40,7 @@ export default function AddItemModal({
       setFormErrors(errors);
       return;
     }
-    OnAddItemModalSubmit({ name, imageUrl, weather });
+    onAddItemModalSubmit({ name, imageUrl, weather });
     // Reset form + close modal
     setName('');
     setImageUrl('');

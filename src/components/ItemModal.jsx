@@ -15,7 +15,10 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
             <h2 className="item__modal-caption">{card.name}</h2>
             <p className="item__modal-weather">weather : {card.weather}</p>
           </div>
-          <button onClick={onDelete} className="item__card-delete-btn">
+          <button
+            onClick={() => onDelete(card._id)}
+            className="item__card-delete-btn"
+          >
             Delete item
           </button>
         </div>
