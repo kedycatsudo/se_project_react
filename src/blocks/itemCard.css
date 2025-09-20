@@ -1,7 +1,6 @@
 .card {
   width: 323px;
   border-radius: 12px;
-  border: black;
   position: relative;
   display: flex;
   justify-content: center;

@@ -8,20 +8,24 @@ function getItems() {
 }
 
 // Add a new clothing item
-function postItem({ name, imageUrl, weather }) {
+function postItem({ name, imageUrl, weather }, token) {
   return fetch(`${baseUrl}/items`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
     body: JSON.stringify({ name, imageUrl, weather }),
   }).then(checkResponse);
 }
 
 // Delete a clothing item by id
-function deleteItem(id) {
+function deleteItem(id, token) {
   return fetch(`${baseUrl}/items/${id}`, {
     method: 'DELETE',
+    headers: {
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
   }).then(checkResponse);
 }
 function addCardLike(id, token) {

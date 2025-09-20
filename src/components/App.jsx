@@ -10,7 +10,7 @@ import currentTemperatureUnitContext from '../contexts/CurrentTemperatureUnitCon
 import AddItemModal from './AddItemModal';
 import { Routes, Route } from 'react-router-dom';
 import Profile from './Profile';
-import ProtectedRoute from './ProtextedRoute';
+import ProtectedRoute from './ProtectedRoute';
 import {
   getItems,
   postItem,
@@ -132,6 +132,8 @@ function App() {
   const handleSignOut = () => {
     localStorage.removeItem('jwt');
     setCurrentUser(null); // This will make isLoggedIn === false
+    navigate('/'); // Redirect to main page
+
     // Optionally redirect, etc.
   };
   const handleDeleteItem = (id) => {

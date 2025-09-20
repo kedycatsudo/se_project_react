@@ -32,9 +32,7 @@ function Header({ handleAddClick, weatherData, setActiveModal }) {
       );
     }
     // fallback to a generic placeholder image
-    return (
-      <img src={avatarPlaceholder} alt="Avatar" className="header__avatar" />
-    );
+    return <img src={avatar} alt="Avatar" className="header__avatar" />;
   }
 
   return (
