@@ -32,3 +32,40 @@
   text-decoration: none;
   color: black;
 }
+.header__auth-controls {
+  display: flex;
+  gap: 12px;
+  margin-left: 16px;
+  align-items: center;
+}
+
+.header__auth-btn {
+  background: transparent;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 20px;
+  font-family: 'Cabinet Grotesk', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.header__auth-btn:hover,
+.header__auth-btn:focus {
+  color: white;
+  background: #333;
+}
+.header__avatar--placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #fff;
+}
