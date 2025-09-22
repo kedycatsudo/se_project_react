@@ -8,7 +8,7 @@ import { coordinates, apiKey } from '../utils/constants';
 import Footer from './Footer';
 import currentTemperatureUnitContext from '../contexts/CurrentTemperatureUnitContext';
 import AddItemModal from './AddItemModal';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Profile from './Profile';
 import ProtectedRoute from './ProtectedRoute';
 import {
@@ -24,6 +24,7 @@ import EditProfileModal from './EditProfileModal';
 import { getUser, signup, signin, updateUser } from '../utils/auth';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 function App() {
+  const navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem('jwt'));
   const [weatherData, setWeatherData] = useState({
     type: '',
@@ -114,7 +115,7 @@ function App() {
     setActiveModal('');
   };
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    postItem({ name, imageUrl, weather })
+    postItem({ name, imageUrl, weather }, token)
       .then((newItem) => {
         // Add link property for consistency
         const normalizedItem = {
@@ -137,7 +138,7 @@ function App() {
     // Optionally redirect, etc.
   };
   const handleDeleteItem = (id) => {
-    deleteItem(id)
+    deleteItem(id, token)
       .then(() => {
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== id)
@@ -220,6 +221,7 @@ function App() {
                       onSignOut={handleSignOut} // pass as prop
                       onEditProfile={handleEditProfileOpen}
                       onCardClick={handleCardClick}
+                      onCardLike={handleCardLike} // <-- pass the handler here
                       clothingItems={clothingItems.filter(
                         (item) => item.owner === currentUser?._id
                       )}

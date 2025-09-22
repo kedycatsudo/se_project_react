@@ -44,19 +44,20 @@ function Header({ handleAddClick, weatherData, setActiveModal }) {
         {currentDate},{weatherData.city || ''}
       </p>
       <ToggleSwitch />
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        + Add clothes
-      </button>
+
       {currentUser ? (
         <Link to="/profile" className="header__link">
           <div className="header__user-container">
             <p className="header__username">{currentUser.name}</p>
             {renderAvatar()}
           </div>
+          <button
+            onClick={handleAddClick}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            + Add clothes
+          </button>
         </Link>
       ) : (
         <div className="header__auth-controls">

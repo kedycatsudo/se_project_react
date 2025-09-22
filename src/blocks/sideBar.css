@@ -4,3 +4,7 @@
 }
 .sidebar__username {
 }
+.sidebar__avatar {
+  width: 80px;
+  height: 80px;
+}
