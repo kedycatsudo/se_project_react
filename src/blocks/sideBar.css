@@ -1,10 +1,36 @@
 .sidebar {
   display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 .sidebar__username {
+  font-weight: 900;
+  font-size: 20px;
 }
 .sidebar__avatar {
+  border-radius: 100px;
   width: 80px;
   height: 80px;
+}
+
+.sideBar__btn {
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+}
+.sidebar__container {
+  gap: 16px;
+  display: flex;
+  align-items: center;
+}
+.sidebar__btn-container {
+  font-weight: 900;
+  font-size: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
 }

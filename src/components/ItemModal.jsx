@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 import '../blocks/itemModal.css';
-
-function ItemModal({ activeModal, onClose, card, onDelete }) {
+import DeleteItemModal from './DeleteItemModal';
+function ItemModal({ onRequestDelete, activeModal, onClose, card, onDelete }) {
   const currentUser = useContext(CurrentUserContext);
   const isOwn = currentUser && card.owner === currentUser._id;
 
@@ -21,10 +21,7 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
             <p className="item__modal-weather">weather : {card.weather}</p>
           </div>
           {isOwn && (
-            <button
-              onClick={() => onDelete(card._id)}
-              className="item__card-delete-btn"
-            >
+            <button onClick={onRequestDelete} className="item__card-delete-btn">
               Delete item
             </button>
           )}

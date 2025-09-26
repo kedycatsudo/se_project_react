@@ -46,11 +46,7 @@ function Header({ handleAddClick, weatherData, setActiveModal }) {
       <ToggleSwitch />
 
       {currentUser ? (
-        <Link to="/profile" className="header__link">
-          <div className="header__user-container">
-            <p className="header__username">{currentUser.name}</p>
-            {renderAvatar()}
-          </div>
+        <>
           <button
             onClick={handleAddClick}
             type="button"
@@ -58,7 +54,13 @@ function Header({ handleAddClick, weatherData, setActiveModal }) {
           >
             + Add clothes
           </button>
-        </Link>
+          <Link to="/profile" className="header__link">
+            <div className="header__user-container">
+              <p className="header__username">{currentUser.name}</p>
+              {renderAvatar()}
+            </div>
+          </Link>
+        </>
       ) : (
         <div className="header__auth-controls">
           <button

@@ -1,0 +1,29 @@
+.modal__content {
+  font-weight: 700;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.delete__modal-submit {
+  font-weight: 700;
+  border: none;
+  width: fit-content;
+  background-color: transparent;
+  color: red;
+}
+.modal__actions {
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal__cancel {
+  color: black;
+  font-weight: 700;
+  border: none;
+  width: fit-content;
+  background-color: transparent;
+}

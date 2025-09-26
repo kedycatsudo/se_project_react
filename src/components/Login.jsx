@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'react';
 import ModalWithForm from './ModalWithForm';
 
-export default function LoginModal({ isOpen, onClose, onLogin, activeModal }) {
+export default function LoginModal({
+  loginError,
+  isOpen,
+  onClose,
+  onLogin,
+  activeModal,
+  onSwitchAuthModal,
+}) {
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -63,7 +70,15 @@ export default function LoginModal({ isOpen, onClose, onLogin, activeModal }) {
           onChange={handleChange}
         />
         {formErrors.password && <span>{formErrors.password}</span>}
+        {loginError && <span className="modal__error">{loginError}</span>}{' '}
       </label>
+      <button
+        type="button"
+        className="modal__switch-btn"
+        onClick={() => onSwitchAuthModal('register')}
+      >
+        or Sign up
+      </button>
     </ModalWithForm>
   );
 }

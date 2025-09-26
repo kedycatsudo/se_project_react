@@ -11,6 +11,7 @@ import AddItemModal from './AddItemModal';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Profile from './Profile';
 import ProtectedRoute from './ProtectedRoute';
+import DeleteItemModal from './DeleteItemModal';
 import {
   getItems,
   postItem,
@@ -36,7 +37,8 @@ function App() {
   const [activeModal, setActiveModal] = useState('');
   const [currentUser, setCurrentUser] = useState(null);
   const isLoggedIn = !!currentUser; // new
-
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [loginError, setLoginError] = useState('');
   const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
   const [isProfileUpdating, setIsProfileUpdating] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
@@ -45,9 +47,15 @@ function App() {
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === 'F' ? 'C' : 'F');
   };
+  const handleSwitchAuthModal = (modalType) => setActiveModal(modalType);
   function handleEditProfileOpen() {
     setIsEditProfileOpen(true);
   }
+  const handleRequestDelete = () => {
+    setIsDeleteModalOpen(true);
+    closeModal();
+  };
+
   function handleEditProfileClose() {
     setIsEditProfileOpen(false);
   }
@@ -86,7 +94,7 @@ function App() {
       .then((res) => {
         localStorage.setItem('jwt', res.token);
         setToken(res.token);
-        setActiveModal(''); // close modal
+        closeModal();
         return getUser(res.token);
       })
       .then((userData) => setCurrentUser(userData))
@@ -97,12 +105,16 @@ function App() {
       .then((res) => {
         localStorage.setItem('jwt', res.token);
         setToken(res.token);
-        setActiveModal(''); // close modal
+        setLoginError(''); // Clear errors on success
+        closeModal();
         return getUser(res.token);
       })
       .then((userData) => setCurrentUser(userData))
-      .catch(console.error);
+      .catch((err) => {
+        setLoginError('Incorrect email or password'); // Set your error message here
+      });
   }
+
   const handleAddClick = () => {
     setActiveModal('add-garment');
   };
@@ -118,18 +130,17 @@ function App() {
     postItem({ name, imageUrl, weather }, token)
       .then((newItem) => {
         // Add link property for consistency
+        const item = newItem.data; // store the real item here
         const normalizedItem = {
-          ...newItem,
-          link: newItem.link || newItem.imageUrl,
+          ...item, // use item
+          link: item.link || item.imageUrl, // use item
         };
         setClothingItems((prevItems) => [normalizedItem, ...prevItems]);
         closeModal();
       })
-      .catch((error) => {
-        console.log(error);
-        // Optionally show an error message to the user
-      });
+      .catch(console.error);
   };
+
   const handleSignOut = () => {
     localStorage.removeItem('jwt');
     setCurrentUser(null); // This will make isLoggedIn === false
@@ -242,18 +253,32 @@ function App() {
             onAddItemModalSubmit={handleAddItemModalSubmit}
           ></AddItemModal>
           <ItemModal
+            onRequestDelete={handleRequestDelete}
             activeModal={activeModal}
             card={selectedCard}
             onClose={closeModal}
             onDelete={handleDeleteItem}
-          ></ItemModal>
+          />
+
+          <DeleteItemModal
+            isOpen={isDeleteModalOpen}
+            onClose={() => setIsDeleteModalOpen(false)}
+            onDelete={() => {
+              handleDeleteItem(selectedCard._id);
+              setIsDeleteModalOpen(false);
+            }}
+            itemName={selectedCard.name}
+          />
           <RegisterModal
+            onSwitchAuthModal={handleSwitchAuthModal}
             isOpen={activeModal === 'register'}
             activeModal={activeModal}
             onClose={closeModal}
             onRegister={handleRegister} // you’ll define this function!
           />
           <LoginModal
+            onSwitchAuthModal={handleSwitchAuthModal}
+            loginError={loginError}
             isOpen={activeModal === 'login'}
             activeModal={activeModal}
             onClose={closeModal}

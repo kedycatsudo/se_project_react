@@ -13,7 +13,7 @@ function ClothesSection({ onCardClick, clothingItems, onClick, onCardLike }) {
   return (
     <div>
       <div className="clothes__section">
-        <p>Your Items</p>
+        <p className="clothes_section_p">Your Items</p>
         <button onClick={onClick} className="clothes__section-add-btn">
           + Add New
         </button>

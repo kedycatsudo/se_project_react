@@ -23,16 +23,13 @@ function EditProfileModal({ isOpen, onClose, onUpdateProfile, isLoading }) {
   return (
     <div className={`modal ${isOpen ? 'modal__open' : ''}`}>
       <div className="modal__content">
-        <button
-          className="modal__close-btn"
-          type="button"
-          onClick={onClose}
-          aria-label="Close"
-        />
-        <h2 className="modal__title">Edit Profile</h2>
+        <button className="modal__close-btn" type="button" onClick={onClose}>
+          x
+        </button>
+        <h2 className="modal__title">Change profile data</h2>
         <form className="modal__form" onSubmit={handleSubmit}>
           <label className="modal__label">
-            Name
+            Name *
             <input
               className="modal__input"
               type="text"
@@ -44,7 +41,7 @@ function EditProfileModal({ isOpen, onClose, onUpdateProfile, isLoading }) {
             />
           </label>
           <label className="modal__label">
-            Avatar URL
+            Avatar URL *
             <input
               className="modal__input"
               type="url"
@@ -58,7 +55,7 @@ function EditProfileModal({ isOpen, onClose, onUpdateProfile, isLoading }) {
             type="submit"
             disabled={isLoading}
           >
-            {isLoading ? 'Saving...' : 'Save'}
+            {isLoading ? 'Saving...' : 'Save Changes'}
           </button>
         </form>
       </div>

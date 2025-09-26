@@ -1,5 +1,6 @@
 .card {
-  width: 323px;
+  width: 325px;
+  height: 328px;
   border-radius: 12px;
   position: relative;
   display: flex;
@@ -10,19 +11,20 @@
   top: 15px;
 }
 .card__image {
-  width: 100%;
+  width: 250px;
+  height: 250px;
   cursor: pointer;
 }
 .card__like-btn {
+  background-color: transparent;
+  top: 25px;
+  right: 75px;
   position: absolute;
-  background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.5rem;
-  color: #bbb;
   transition: color 0.2s;
   margin-left: 8px;
 }
 .card__like-btn_active {
-  color: #ff4a4a;
+  background-image: url('../assets/like-filled.svg');
 }

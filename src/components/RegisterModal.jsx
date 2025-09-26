@@ -6,6 +6,7 @@ export default function RegisterModal({
   onClose,
   onRegister,
   activeModal,
+  onSwitchAuthModal,
 }) {
   const [form, setForm] = useState({
     name: '',
@@ -41,7 +42,7 @@ export default function RegisterModal({
   return (
     <ModalWithForm
       title="Sign Up"
-      buttonText="Register"
+      buttonText="Sign Up"
       activeModal={activeModal}
       onSubmit={handleSubmit}
       onClose={onClose}
@@ -99,6 +100,13 @@ export default function RegisterModal({
         />
         {formErrors.password && <span>{formErrors.password}</span>}
       </label>
+      <button
+        type="button"
+        className="modal__switch-btn"
+        onClick={() => onSwitchAuthModal('login')}
+      >
+        or Log in
+      </button>
     </ModalWithForm>
   );
 }
