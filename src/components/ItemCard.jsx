@@ -16,8 +16,6 @@ function ItemCard({ item, onCardClick, onCardLike }) {
     item.likes.some((id) => id === currentUser._id);
 
   const handleLike = (e) => {
-    console.log(`img liked`);
-    console.log(isLiked);
     e.stopPropagation(); // Prevent click from propagating to card
     onCardLike({ id: item._id, isLiked });
   };
